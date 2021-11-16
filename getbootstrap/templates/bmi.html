@@ -1,0 +1,42 @@
+{%extends "layout.html"%}
+{%block content%}
+<style>
+    .form-control{
+        background: white;
+        border: solid thin grey;
+        color: black;
+    }
+    
+</style>
+<form action="/bmi" method="post">
+    <div class="row">
+        <div class="g-col-6 col">
+            <input type="number" class="form-control weight" id="weight" placeholder="Enter Your Weight" aria-label="First name">
+        </div>
+        <div class="g-col-6 col">
+            <input type="number" class="form-control height" id="height" placeholder="Enter Your Height" aria-label="Last name">
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="g-col-6 col">
+            <input type="number" class="form-control age" id="age" placeholder="Enter Your Age" aria-label="First name">
+        </div>
+    </div>
+        <div class="form-check g-col-6">
+            <input class="form-check-input" type="radio" value="m" name="flexRadioDefault" id="flexRadioDefault1" checked>
+            <label class="form-check-label" for="flexRadioDefault1">
+                Male
+            </label>
+        </div>
+        <div class="form-check g-col-6">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="f">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Female
+            </label>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-primary" type="submit">Check BMI!</button>
+        </div>
+</form>
+{{totalResult}}
+{%endblock%}

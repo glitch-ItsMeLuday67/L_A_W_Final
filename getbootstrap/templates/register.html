@@ -1,0 +1,24 @@
+{%extends "layout.html"%}
+{%block content%}
+<form class="row g-3" action="/register" method="POST">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Username</label>
+      <input type="text" class="form-control" id="inputEmail4" name="username" placeholder="Enter Your Username">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Enter Your Password">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputAddress" placeholder="Enter your Email" name="email">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="inputAddress2" placeholder="Confirm Your Password" name="cpassword">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+{%endblock%}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D70G17Z9FZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-D70G17Z9FZ');
+    </script>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke's Awesome Website - Home</title>
+    <style>
+      .darkmode-toggle {
+        z-index: 500;
+      }
+      button{
+        isolation: isolate;
+      }
+      .form-check-input{
+        isolation: isolate;
+      }
+      .form-label{
+        isolation: isolate;
+      }
+      .darkmode--activated .card-body{
+        color: #fff;
+        background: #000;
+        border: none;
+      }
+      .darkmode--activated .card{
+        border: none;
+      }
+      .darkmode--activated .form-check-input{
+        background: black;
+        border: solid thin blue;
+      }
+      .darkmode--activated .form-check-input:checked::after{
+        background: blue;
+      }
+      .darkmode--activated .bg-light{
+        background: black;
+      }
+      .darkmode--activated .navbar-light{
+        color: white;
+      }
+      .form-control{
+        color: white;
+        background: rgb(255, 255, 255);
+        border: solid thin grey;
+      }
+      .nav-link{
+        color: black;
+      }
+      .darkmode--activated .nav-link{
+        color: white !important;
+      }
+      .darkmode--activated .nav-item .disabled{
+        color: rgb(206, 206, 206) !important;
+      }
+      .darkmode--activated .form-control{
+        color: white;
+        background: black;
+        border: solid thin grey;
+      }
+      .darkmode--activated .navbar-light .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+        background-repeat: no-repeat;
+      }
+      
+    </style>
+</head>
+<body>
+   <!-- {%if session.get("darkmode")%} -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
+  <!-- {%elif session.get("lightmode")%} -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+  <!-- {%else%} -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+  <!-- {%endif%} -->
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="../static/ItsMeLuday67.png" alt="" width="75px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                {%if session.get("authenticated")%}
+                <a class="nav-link" href="/logout">Logout</a>
+                {%else%}
+                <a class="nav-link" href="/login">Login</a>
+                {%endif%}
+              </li>
+              <li class="nav-item">
+                {%if session.get("authenticated")%}
+                <a class="nav-link disabled" href="/register">Register</a>
+                {%else%}
+                <a class="nav-link" href="/register">Register</a>
+                {%endif%}
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                {%if session.get("admin")%}
+                <a class="nav-link" href="/users">Users</a>
+                {%else%}
+                <a class="nav-link disabled">Users</a>
+                {%endif%}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/foodtracker/">Food Tracker App</a>
+              </li>
+            </ul>
+            <!-- <form action="/dark_mode" method="POST">
+              <div class="form-check form-switch">
+                <input name="darkmodetoggle" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="enable">
+                <label class="form-check-label pe-3" for="flexSwitchCheckChecked">Dark Mode</label>
+              </div>
+              <div class="form-check form-switch">
+                <input name="darkmodetoggle" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="disable">
+                <label class="form-check-label pe-3" for="flexSwitchCheckChecked">Light Mode</label>
+              </div>
+            </form> -->
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        {%block content%}
+        {%endblock%}
+      </div>
+      <script>
+        function addDarkmodeWidget() {
+          new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+
+        const options = {
+          bottom: '64px', // default: '32px'
+          right: 'unset', // default: '32px'
+          left: '32px', // default: 'unset'
+          time: '0.5s', // default: '0.3s'
+          mixColor: '#fff', // default: '#fff'
+          backgroundColor: '#fff',  // default: '#fff'
+          buttonColorDark: '#100f2c',  // default: '#100f2c'
+          buttonColorLight: '#fff', // default: '#fff'
+          saveInCookies: false, // default: true,
+          label: '', // default: ''
+          autoMatchOsTheme: false // default: true
+        }
+        const darkmode = new Darkmode(options);
+
+        darkmode.showWidget();
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+      <script src="script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
