@@ -141,7 +141,7 @@ def register():
     session["email"] = email
     message = ""
 
-    conn = sqlite3.connect('getbootstrap/users.db')
+    conn = sqlite3.connect('database/users.db')
     cur = conn.cursor()
     usernames = cur.execute("SELECT Username FROM registration_db").fetchall()
     print(usernames)
@@ -157,7 +157,7 @@ def register():
         message = "Password mismatch."
         return render_template("register.html", message = message)
     
-    conn = sqlite3.connect('getbootstrap/users.db')
+    conn = sqlite3.connect('database/users.db')
     cur = conn.cursor()
     cur.execute('''INSERT INTO registration_db(
         Username, Password, Email) VALUES(?,?,?)''',(username, password, email))
@@ -209,7 +209,7 @@ def login():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users():
-    conn = sqlite3.connect("getbootstrap/users.db")
+    conn = sqlite3.connect("database/users.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM registration_db")
     records = cur.fetchall()

@@ -2,7 +2,7 @@ from flask import g
 import sqlite3
 
 def connect_db():
-    sql = sqlite3.connect('getbootstrap/food_log.db')
+    sql = sqlite3.connect('database/food_log.db')
     sql.row_factory = sqlite3.Row
     return sql
 
