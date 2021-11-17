@@ -46,12 +46,17 @@ def validate_biggest():
 
 @app.route("/bmi",methods=["GET","POST"])
 def bmi():
+    if session.get("authenticated") != True:
+        return redirect(url_for("login"))
     if request.method == "GET":
         return render_template("bmi.html")
+    username = session.get("username")
     weight = request.form.get("weight",type = float)
     height = request.form.get("height", type = float)
     age = request.form.get("age", type = float)
-    gender = request.form.get("gender")
+    gender = request.form.get("flexRadioDefault")
+    name = request.form.get("name")
+    TBW = 0
     resultBMI = ""
     resultFAT = ""
     resultH2O = ""
@@ -64,9 +69,9 @@ def bmi():
     if gender == "f":
         TBW = -2.097 + 0.1069 * height + 0.2466 * weight
         resultH2O = "Your total body water is %.2f"% TBW
-    if gender == "m":
-        TBW1 =  2.447 - 0.09156 * age + 0.1074 * height + 0.3362 * weight
-        resultH2O = "Your total body water is %.2f"% TBW1
+    elif gender == "m":
+        TBW =  2.447 - 0.09156 * age + 0.1074 * height + 0.3362 * weight
+        resultH2O = "Your total body water is %.2f"% TBW
     if BMI <= 18.4:
         resultHOW = "You are underweight."
     elif BMI <= 24.9:
@@ -80,6 +85,12 @@ def bmi():
     else:
         resultHOW = "You are severely obese."
     totalResult = resultBMI + ". " + resultFAT + ". " + resultH2O + ". " + resultHOW
+    conn = sqlite3.connect("database/users.db")
+    cur = conn.cursor()
+    
+    cur.execute("INSERT INTO bmi_db (weight, height, age, gender, BMI, TBW, TFP, health, username, name) values(?,?,?,?,?,?,?,?,?,?);", [weight, height, age, gender, BMI, TBW, fat, resultHOW, username, name])
+    conn.commit()
+    conn.close()
     return render_template("bmi.html", totalResult = totalResult)
 
 @app.route('/leap_year', methods=['GET', 'POST'])
@@ -191,6 +202,8 @@ def login():
                 message_login = "You have logged in as an admin"
                 session["admin"] = True
                 session["authenticated"] = True
+                session["username"] = username
+
                 return render_template("index.html", message_login = message_login)
             message_login = "Username or password is incorrect."
             return render_template("login.html", message_login = message_login)
@@ -201,6 +214,7 @@ def login():
         if password == db_password:
             message_login = "Successfully Logged In"
             session["authenticated"] = True
+            session["username"] = username
             return render_template("index.html", message_login = message_login)
         message_login = "Incorrect username or password"
         return render_template("login.html", message_login = message_login)
@@ -242,6 +256,9 @@ def close_db(error):
 
 @app.route('/foodtracker/', methods=['POST', 'GET'])
 def foodtracker():
+    print(session.get("authenticated"))
+    if session.get("authenticated") == None:
+        return redirect(url_for('login'))
     db = get_db()
 
     if request.method == 'POST':

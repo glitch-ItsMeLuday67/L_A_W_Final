@@ -9,19 +9,26 @@
     
 </style>
 <form action="/bmi" method="post">
+    <div class="g-col-6 col">
+        Enter Your Name
+        <input type="text" class="form-control weight" id="name" placeholder="Enter Your Name" aria-label="First name" name="name" required>
+    </div><br>
     <div class="row">
         <div class="g-col-6 col">
-            <input type="number" class="form-control weight" id="weight" placeholder="Enter Your Weight" aria-label="First name">
+            Enter Your Weight - Kilograms
+            <input type="number" class="form-control weight" id="weight" placeholder="Enter Your Weight" aria-label="First name" name="weight" required>
         </div>
         <div class="g-col-6 col">
-            <input type="number" class="form-control height" id="height" placeholder="Enter Your Height" aria-label="Last name">
+            Enter Your Height - Centimeters
+            <input type="number" class="form-control height" id="height" placeholder="Enter Your Height" aria-label="Last name" name="height" required>
         </div>
     </div><br>
     <div class="row">
         <div class="g-col-6 col">
-            <input type="number" class="form-control age" id="age" placeholder="Enter Your Age" aria-label="First name">
+            Enter Your Age
+            <input type="number" class="form-control age" id="age" placeholder="Enter Your Age" aria-label="First name" name="age" required>
         </div>
-    </div>
+    </div><br>
         <div class="form-check g-col-6">
             <input class="form-check-input" type="radio" value="m" name="flexRadioDefault" id="flexRadioDefault1" checked>
             <label class="form-check-label" for="flexRadioDefault1">
@@ -33,10 +40,11 @@
             <label class="form-check-label" for="flexRadioDefault2">
                 Female
             </label>
-        </div>
+        </div><br>
         <div class="d-grid gap-2 d-md-block">
             <button class="btn btn-primary" type="submit">Check BMI!</button>
-        </div>
+        </div><br>
+        <img src="../static/BMI.jpg" alt="bmi.jpg">
 </form>
 {{totalResult}}
-{%endblock%}
+{%endblock%} 

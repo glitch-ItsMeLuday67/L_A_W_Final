@@ -10,6 +10,13 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{{ url_for('foodtracker') }}">Home</a></li>
             <li><a href="{{ url_for('foodtracker_food') }}">Add Food Item</a></li>
+            <li class="nav-item">
+              {%if session.get("authenticated")%}
+              <a class="nav-link" href="/logout">Logout</a>
+              {%else%}
+              <a class="nav-link" href="/login">Login</a>
+              {%endif%}
+            </li>
           </ul>
         </div>
       </div>
