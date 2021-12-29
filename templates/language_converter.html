@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Converter</title>
+    <style>
+        form{
+            display: flex;
+        }
+        label{
+            padding: 10px;
+            padding-left: 45%;
+        }
+    </style>
+</head>
+<body>
+    <form action="/converter" method="post">
+        <div class="input">
+            <label for="">Type English Here</label>
+            <br>
+            <div>
+                <textarea style="width: 926px; height: 386px;" name="english-box" resize="" id="english-box" cols="50" rows="10"></textarea>
+            </div>
+            <button type="submit">Translate</button>
+        </div>
+
+        <div class="output">
+            <label for="">Minionese Translation</label>
+            <br>
+            <div class="minion">
+                {{translated}}
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -44,6 +44,43 @@
         <div class="d-grid gap-2 d-md-block">
             <button class="btn btn-primary" type="submit">Check BMI!</button>
         </div><br>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+        <script>
+        var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+        new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{ 
+            data: [],
+            borderColor: "red",
+            fill: false
+            }, { 
+            data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+            borderColor: "green",
+            fill: false
+            }, { 
+            data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+            borderColor: "blue",
+            fill: false
+            }, { 
+            data: [300,700,2000,5000,2000,4000,2000,1000,200,100],
+            borderColor: "purple",
+            fill: false
+            }, { 
+            data: [300,700,2000,5000,6000,9000,2000,1000,300,100],
+            borderColor: "yellow",
+            fill: false
+            }]
+        },
+        options: {
+            legend: {display: false}
+        }
+        });
+        </script>
+
         <img src="../static/BMI.jpg" alt="bmi.jpg">
 </form>
 {{totalResult}}

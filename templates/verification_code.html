@@ -1,0 +1,9 @@
+{%extends "layout.html"%}
+{%block content%}
+<form action="/vcodecheck" method="post">
+    {%if session.get("status")%}
+    Enter the verification code you have recieved in your inbox : <input type="text" name="vcode" id="">
+    <button type="submit">Enter verification code</button>
+    {%endif%}
+</form>
+{%endblock%}

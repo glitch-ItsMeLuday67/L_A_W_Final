@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/weather.css">
+    <style>
+        *{
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="/weather" method="post">
+
+        <h2>Enter the name of your city</h2>
+        <input type="text" name="city_name">
+        <button type="submit">Enter</button>
+    
+        Celsius
+        <input type="radio" name="temp_unit" id="" value="celsius" required>
+        Fahrenheit
+        <input type="radio" name="temp_unit" value="fahrenheit">
+
+    </form>
+<div class="container">
+
+    <div class="weathercity">
+        {{temp_data[4]}}
+    </div>
+
+    <div class="weatherpic"> 
+        {%if temp_data[1] == "Clouds"%}
+        <img src="../static/weather_icons/cloudy_day.png">
+        {%elif temp_data[1] == "Mist" or temp_data[1] == "Haze"%}
+        <img src="../static/weather_icons/foggy_day.png" alt="">
+        {%elif temp_data[1] == "Clear"%}
+        <img src="../static/weather_icons/clear_day.png" alt="">
+        {%elif temp_data[1] == "Rain"%}
+        <img src="../static/weather_icons/rainy_day.png" alt="">
+        {%endif%}
+    </div>
+
+    <div class="weathertemp">
+        {%if temp_data[11] == "celsius"%}
+        <p> {{temp_data[2]}} <sup>o</sup> C </p>
+        {%elif temp_data[11] == "fahrenheit"%}
+        <p> {{temp_data[3]}} <sup>o</sup> F </p>
+        {%endif%}
+    </div>
+
+    <div class="weatherinfo">
+        {%if temp_data[11] == "celsius"%}
+        <p> Max: {{temp_data[6]}}° Min: {{temp_data[9]}}° </p>
+        <p> Humidity: {{temp_data[8]}}% </p>
+        <p> Feels like: idk i haven't added this yet whoops. </p>
+        {%elif temp_data[11] == "fahrenheit"%}
+        <p> Max: {{temp_data[7]}}° Min: {{temp_data[10]}}° </p>
+        <p> Humidity: {{temp_data[8]}}% </p>
+        <p> Feels like: idk i haven't added this yet whoops. </p>
+        {%endif%}
+    </div>
+
+    <div class="temp">
+        {%if city%}
+        <h2>The current temperature in {{temp_data[4]}} is {{temp_data[2]}}°<b>C</b> and {{temp_data[3]}}°<b>F</b></h2>
+        {%else%}
+        <h2>{{error}}</h2>
+        {%endif%}
+    </div>
+
+</div>
+
+</body>
+
+</html>

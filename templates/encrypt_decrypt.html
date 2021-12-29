@@ -1,0 +1,31 @@
+{%extends "layout.html"%}
+{%block content%}
+
+<style>
+    hi{
+        color: blue;
+    }
+</style>
+
+<div class="encrypt">
+    
+    <h2>Encryption of a String</h2>
+
+    <form class="row lh-lg" action="/encrypt" method="post">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Enter a text to encrypt</label>
+          <input type="text" class="form-control" id="inputEmail4" name="string">
+        </div>
+        
+        <div class="col-12"><br>
+            <button type="submit" class="btn btn-primary">Encrypt</button>
+        </div><br>
+        <h3><b>{{string}}</b></h3><br>
+        <h2><b><hi>{{encrypt}}</hi></h2></b>
+    </form>
+
+</div>
+
+
+
+{%endblock%}

@@ -1,5 +1,9 @@
 {%extends "layout.html"%}
 {%block content%}
+<form class="d-flex" action="/users" method="POST">
+    <input class="form-control me-2" name="form-control" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form><br>
 <table class="table table-light table-striped">
     <tr>
         <th>Username</th>
